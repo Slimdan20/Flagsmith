@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import { FlagsmithProvider } from "flagsmith/react";
-import flagsmith from "flagsmith";
+import FlagsmithWrapper from "./Providers/FlagsmithWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +22,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <FlagsmithProvider
-          options={{ environmentID: "GugcXWy5TPjqqYwPrdZKFj" }}
-          flagsmith={flagsmith}
-        >
+        <FlagsmithWrapper>
           {children}
-        </FlagsmithProvider>
+        </FlagsmithWrapper>
       </body>
     </html>
   );
